@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Navbar.scss'
 import { Link, NavLink } from 'react-router-dom'
+import { AuthContext } from '../../Providers/AuthProvider'
 
 const Navbar = () => {
+  const {user,logOut} = useContext(AuthContext)
+ 
+
   return (
     <div className='container'>
 
@@ -11,11 +15,10 @@ const Navbar = () => {
       <ul>
         <li><Link to='/' id="logo">TaskZen</Link></li>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/alltask'>All Tasks</NavLink></li>
         <li><NavLink to='/addtask'>Add Task</NavLink></li>
         <li><NavLink to='/mytask'>My Tasks</NavLink></li>
         <li><NavLink to='/register'>Register</NavLink></li>
-        <li><NavLink to='/login'>LogIn</NavLink></li>
+       {user? <li><button to='/logout' onClick={logOut} className='btn-logout'>Logout</button> <span className='username'>Welcome, {user.displayName}</span></li>:<li><Link to='/login'>LogIn</Link></li>}
       </ul>
     </nav>
   </div>

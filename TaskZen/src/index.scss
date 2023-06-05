@@ -70,6 +70,7 @@ html{
       }
     }
 
+
     .btn-secondary{
       font-size: 1.8rem;
       text-align: center;
@@ -87,6 +88,19 @@ html{
       }
     }
 
+    .flex-btn{
+      display: flex;  
+      gap: 2rem;
+    }
+
+    .text-area{
+      resize:none
+    }
+
+    .username{
+      font-size: 1.3rem;
+      color: #fff;
+    }
   @media only screen and (max-width: 900px){
     padding: 0 2rem;
     }

@@ -5,7 +5,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AddTask from "../Pages/AddTask/AddTask";
 import MyTask from "../Pages/MyTaks/MyTask";
-import AllTasks from "../Pages/ALLTasks/AllTasks";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -26,16 +26,12 @@ const router = createBrowserRouter([
         },
         {
             path:'/addtask',
-            element:<AddTask></AddTask>
+            element:<PrivateRoute><AddTask></AddTask></PrivateRoute>
         },
         {
             path:'/mytask',
-            element:<MyTask></MyTask>
-        },
-        {
-            path:'/allTask',
-            element:<AllTasks></AllTasks>
-        },
+            element:<PrivateRoute><MyTask></MyTask></PrivateRoute>
+        }
       ]
     },
   ]);

@@ -1,0 +1,58 @@
+.register{
+       background-color: var(--primary);
+       padding-top: 1rem;
+       height: max-content;
+       color: white;
+
+.form{
+
+    padding: 2rem 0;
+    width: 50%;
+    margin: 0 auto;
+
+    &--group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: space-between;
+        gap:1rem;
+
+    &--elements{
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+
+        &__action{
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+        font-size: 1.8rem;
+        border-radius: 8px;
+
+        & input, textarea{
+            padding: 1rem .5rem;
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        .error{
+            color:var(--color-red)
+        }
+
+      
+        }
+
+    }
+    a {
+        text-decoration: none;
+        font-size: 1.8rem;
+        color: #fff;
+    }
+    .abcRioButtonSvg{
+        margin-right: 1rem;
+     }
+    }
+}
+}
