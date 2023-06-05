@@ -1,3 +1,5 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -5,7 +7,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+:root{
+  --primary:#22303e;
+  --secondary: #30384c;
+  --color-red: #f14562;
+  --color-red-dark: #e0304e;
+}
 *,
 *::after,
 *::before{
@@ -17,9 +24,77 @@ html{
   font-size: 62.5%;
   box-sizing: border-box;
 
+  @media only screen and (max-width: 900px){
+    font-size: 50%;
+  }
+
   body {
     box-sizing: inherit;
+    padding: 4rem;
+    font-family: 'Roboto', sans-serif;
+
+    .heading-1{
+      font-size: 3rem;
+      text-align: center;
+      margin: 2rem 0;
+      font-weight: 500;
+      letter-spacing: 1px;
+      
+
+    }
+    .subtext{
+      font-size: 1.8rem;
+      text-align: center;
+      margin: 2rem 0;
+      font-weight: 400;
+      width: 60%;
+      margin: 0 auto;
+      line-height: 2.5rem;
+      letter-spacing: 1px;
+    }
+    
+    .btn-primary{
+      font-size: 1.8rem;
+      text-align: center;
+      color: white;
+      padding: 1.5rem 2rem;
+      background-color: var(--color-red);
+      text-decoration: none;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      &:hover{
+        background-color: var(--color-red-dark);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transform: translate(0, -5px);
+        transition: transform .5s;
+      }
+    }
+
+    .btn-secondary{
+      font-size: 1.8rem;
+      text-align: center;
+      color: rgb(22, 22, 22);
+      padding: 1.5rem 2rem;
+      background-color: white;
+      text-decoration: none;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      &:hover{
+        background-color: #e0e0e0;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transform: translate(0, -5px);
+        transition: transform .5s;
+      }
+    }
+
+  @media only screen and (max-width: 900px){
+    padding: 0 2rem;
+    }
   }
+
   
 }
 
+.active{
+  background-color: var(--color-red);
+}
