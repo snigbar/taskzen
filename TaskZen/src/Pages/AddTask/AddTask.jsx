@@ -69,7 +69,7 @@ const AddTask = () => {
           <label>
             <span className="f">Task Destails</span>
           </label>
-          <textarea rows="4" type="text" placeholder="task details (200 characters max)" name="task" maxLength={200}
+          <textarea rows="4" type="text" placeholder="task details (30 characters max)" name="task" maxLength={30}
               {...register("task", {
                 required: true
             })} style={{resize: 'none'}}/>

@@ -18,7 +18,7 @@ const Navbar = () => {
         <li><NavLink to='/addtask'>Add Task</NavLink></li>
         <li><NavLink to='/mytask'>My Tasks</NavLink></li>
         <li><NavLink to='/register'>Register</NavLink></li>
-       {user? <li><button to='/logout' onClick={logOut} className='btn-logout'>Logout</button> <span className='username'>Welcome, {user.displayName}</span></li>:<li><Link to='/login'>LogIn</Link></li>}
+       {user? <li><button to='/logout' onClick={logOut} className='btn-logout'>Logout</button> <span className='username'>Welcome, {user.displayName}</span></li>:<li><NavLink to='/login'>LogIn</NavLink></li>}
       </ul>
     </nav>
   </div>
