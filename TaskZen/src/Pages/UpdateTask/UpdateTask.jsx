@@ -1,42 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Providers/AuthProvider';
 import moment from 'moment/moment';
 import Swal from 'sweetalert2';
+import {useLoaderData, useNavigate, useParams } from 'react-router-dom';
 
 
 
-const AddTask = () => {
+const UpdateTask = () => {
+
+    const {_id, task, date:taskDate} = useLoaderData()
+    const navigate = useNavigate();
+  
   var date = moment();
   var currentDate = date.format('YYYY-MM-DD');
-
   const {user} = useContext(AuthContext)
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+
+  const { register, handleSubmit, formState: { errors }} = useForm({
     defaultValues: {
       name: user.displayName,
       email: user.email,
-      date: currentDate
+      date: taskDate,
+      task: task
     }
   });
 
   const onSubmit = data => {
-  const task = {
+  const updatedTask = {
     name: data.name,
     email: data.email,
     date: data.date,
     task: data.task
   }
 
-  fetch('http://localhost:5000/api/post', {
-    method:"POST",
+  fetch(`http://localhost:5000/api/update/${_id}`, {
+    method:"PATCH",
     headers:{
       "content-type":"application/json"
     },
-    body: JSON.stringify(task)
+    body: JSON.stringify(updatedTask)
   }).then(res => res.json()).then(res=> {
-    if(res.added){
-      reset()
+    if(res.updated){
+    
         Swal.fire({
             title: `${res.message}`,
             showClass: {
@@ -45,7 +51,11 @@ const AddTask = () => {
             hideClass: {
                 popup: 'animate__animated animate__fadeOutUp'
             }
+           
         });
+       
+        navigate('/mytask', {replace:true})
+       
     }
   })
 };
@@ -55,11 +65,11 @@ const AddTask = () => {
  
 
     <div className="f">
-      <h1 className="heading-1">Add Task</h1>
-      <p className="subtext">Add Your Task</p>
+      <h1 className="heading-1">Update Task</h1>
+      <p className="subtext">Update Your Task</p>
     </div>
     
-    <form onSubmit={handleSubmit(onSubmit)} className='form'>
+    <form onSubmit={handleSubmit(onSubmit)} className='form' method='patch'>
     <div className="form--group">
       <div className="form--group--elements">
         <div className="form--group--elements__action">
@@ -97,7 +107,7 @@ const AddTask = () => {
         {errors.task?.type === 'required' && <p className="error">task details is required</p>}
         </div>
      
-          <button className="btn-primary" type='submit'>Add Task</button>
+          <button className="btn-primary" type='submit'>Update Task</button>
          
        
  
@@ -111,4 +121,4 @@ const AddTask = () => {
   )
 }
 
-export default AddTask
+export default UpdateTask

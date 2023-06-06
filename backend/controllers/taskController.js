@@ -20,6 +20,7 @@ const myTasks =  async(req,res) =>{
     res.json(myTask)
 }
 
+// delelte a task
 const deleteTask =  async(req,res) =>{
     const id = req.params.id
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -36,8 +37,48 @@ const deleteTask =  async(req,res) =>{
     
 }
 
+// get a task
+
+const getATask = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({error: 'No such workout'})
+    }
+  
+    const workout = await AllTasks.findById(id)
+  
+    if (!workout) {
+      return res.status(404).json({error: 'No such workout'})
+    }
+  
+    res.status(200).json(workout)
+  }
+
+  // update a task
+
+  const updateTask = async (req, res) => {
+    const { id } = req.params
+  
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({error: 'No Taskfound'})
+    }
+    console.log(req.body)
+    const updated = await AllTasks.findOneAndUpdate({_id: id}, {
+      ...req.body
+    })
+  
+    if (!updated) {
+      return res.status(400).json({error: 'no task to update'})
+    }
+  
+    res.status(200).json({updated: true, message:"updated Successfully"})
+  }
+
 module.exports = {
     addTask,
     myTasks,
-    deleteTask
+    deleteTask,
+    getATask,
+    updateTask
   }

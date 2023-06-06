@@ -46,11 +46,7 @@
             padding: 1rem 2rem;
             gap: 4rem;
             flex: 3;
-            
-          
-            
-           
-            
+            flex-wrap: wrap;       
 
             .icon-trash{
                 color: var(--color-red);
@@ -84,6 +80,10 @@
                     background-color: #6b0ada;
                     color: #ffff;
                 }
+            }
+
+            .past-tasks{
+                color: #7a0ef5;
             }
 
             .task-details{

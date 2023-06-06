@@ -64,9 +64,10 @@ useEffect(()=>{
 <div className="login">
 
 
-  <div className="f">
+  <div >
     <h1 className="heading-1">Login</h1>
     <p className="subtext">Login To Your Account and Start</p>
+    <p style={{fontSize:'1.3rem', textAlign:'center', marginTop:"5px"}}>Don't want to create an account? use the login details: email: admin@admin.com, password: 123456</p>
   </div>
   
   <form onSubmit={handleSubmit(onSubmit)} className='form'>
@@ -74,16 +75,16 @@ useEffect(()=>{
     <div className="form--group--elements">
       <div className="form--group--elements__action">
         <label>
-          <span className="f">Email</span>
+          <span>Email</span>
         </label>
-        <input type="email" placeholder="email" name="email" className="f" {...register("email", { required: true })}/>
-      {errors.email && <span className="f">Email is required</span>}
+        <input type="email" placeholder="email" name="email"  {...register("email", { required: true })}/>
+      {errors.email && <span >Email is required</span>}
       </div>
       <div className="form--group--elements__action">
         <label>
-          <span className="f">Password</span>
+          <span>Password</span>
         </label>
-        <input type="password" placeholder="password" name="password" className="f" 
+        <input type="password" placeholder="password" name="password"  
         {...register("password", {
           required: true,
           minLength: 6,

@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import AddTask from "../Pages/AddTask/AddTask";
 import MyTask from "../Pages/MyTaks/MyTask";
 import PrivateRoute from "./PrivateRoute";
+import UpdateTask from "../Pages/UpdateTask/UpdateTask";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
         {
             path:'/mytask',
             element:<PrivateRoute><MyTask></MyTask></PrivateRoute>
+        },
+        {
+            path:'/update/:id',
+            element:<PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/api/update/${params.id}`)
         }
       ]
     },

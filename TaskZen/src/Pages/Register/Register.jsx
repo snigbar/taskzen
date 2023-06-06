@@ -47,7 +47,8 @@ const Register = () => {
 
     <div className="f">
       <h1 className="heading-1">Register</h1>
-      <p className="subtext">Create an account to add and manage task</p>
+      <p className="subtext">Create an account to enhance your task management experience!</p>
+      <p style={{fontSize:'1.3rem', textAlign:'center', marginTop:"5px"}}>Don't want to create an account? use the login details: email: admin@admin.com, password: 123456</p>
     </div>
     
     <form onSubmit={handleSubmit(onSubmit)} className='form'>
