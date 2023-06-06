@@ -8,9 +8,13 @@ const taskSchema = new Schema({
     },
     email:{
         type: String,
+        required: true,
+    },
+    task:{
+        type: String,
         required: true
     },
-    details:{
+    date:{
         type: String,
         required: true
     },
@@ -23,4 +27,4 @@ const taskSchema = new Schema({
 }, 
 { timestamps: true })
 
-module.export = mongoose.model("allTasks",taskSchema)
+module.exports = mongoose.model("AllTask",taskSchema)

@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Providers/AuthProvider';
 import moment from 'moment/moment';
+import Swal from 'sweetalert2';
 
 
 
@@ -26,7 +27,27 @@ const AddTask = () => {
     date: data.date,
     task: data.task
   }
-  console.log(task)
+
+  fetch('http://localhost:5000/api/post', {
+    method:"POST",
+    headers:{
+      "content-type":"application/json"
+    },
+    body: JSON.stringify(task)
+  }).then(res => res.json()).then(res=> {
+    if(res.added){
+      reset()
+        Swal.fire({
+            title: `${res.message}`,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+    }
+  })
 };
 
   return (
@@ -69,7 +90,7 @@ const AddTask = () => {
           <label>
             <span className="f">Task Destails</span>
           </label>
-          <textarea rows="4" type="text" placeholder="task details (30 characters max)" name="task" maxLength={30}
+          <textarea rows="4" type="text" placeholder="task details (80 characters max)" name="task" maxLength={80}
               {...register("task", {
                 required: true
             })} style={{resize: 'none'}}/>
