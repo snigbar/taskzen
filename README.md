@@ -7,7 +7,7 @@ The front-end development utilizes React.js, a powerful JavaScript library, to c
 
 -------
 
-## [Live link: TaskZen](https://64803da178aeb43e9318ab4a--taskzen.netlify.app/)
+## [Live link: TaskZen](https://taskzen.netlify.app/)
 
 ----
 ## Steps to install the project:
