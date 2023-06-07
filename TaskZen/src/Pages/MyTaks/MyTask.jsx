@@ -13,20 +13,22 @@ const MyTask = () => {
   const [myTasks, setMyTasks] = useState([])
   const [refetch, setRefetch] = useState(false)
   
+  // comparing date with today
   const today = moment();
   const compareDate = (date) => {
         const difference = moment(date).diff( today, "days" )
         return difference
   }
 
-  const url = `http://localhost:5000/api/mytask/?email=${user.email}`
+  // getting my tasks
+  const url = `https://taskzen-mu.vercel.app/api/mytask/?email=${user.email}`
   useEffect(()=>{
     fetch(url).then(res => res.json()).then(data=> {
-    console.log(data)
     setMyTasks(data)
   })
   },[url,refetch])
 
+  // delete operation
   const handleDelete = (id) =>{
 
     Swal.fire({
@@ -40,7 +42,7 @@ const MyTask = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-      fetch(`http://localhost:5000/api/mytask/${id}`,{
+      fetch(`https://taskzen-mu.vercel.app/api/mytask/${id}`,{
       method: "DELETE"
       }).then(res => res.json()).then(data=> {
       setRefetch(!refetch)

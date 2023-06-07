@@ -8,10 +8,12 @@ import Swal from 'sweetalert2';
 
 
 const AddTask = () => {
+  // date
   var date = moment();
   var currentDate = date.format('YYYY-MM-DD');
 
   const {user} = useContext(AuthContext)
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
       name: user.displayName,
@@ -28,7 +30,8 @@ const AddTask = () => {
     task: data.task
   }
 
-  fetch('http://localhost:5000/api/post', {
+  // adding task
+  fetch('https://taskzen-mu.vercel.app/api/post', {
     method:"POST",
     headers:{
       "content-type":"application/json"

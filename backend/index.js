@@ -9,8 +9,15 @@ const tasksRoute = require('./routes/tasks.js')
 const app = express()
 
 // middleware
+
+const corsConfig = {
+  credentials:true,
+  origin:true,
+  methods: ["GET","POST","PATCH","PUT","DELETE","OPTIONS"]
+}
+
+app.use(cors(corsConfig));
 app.use(express.json())
-app.use(cors())
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()

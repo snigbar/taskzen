@@ -34,7 +34,9 @@ const UpdateTask = () => {
     task: data.task
   }
 
-  fetch(`http://localhost:5000/api/update/${_id}`, {
+  // updating
+
+  fetch(`https://taskzen-mu.vercel.app/api/update/${_id}`, {
     method:"PATCH",
     headers:{
       "content-type":"application/json"

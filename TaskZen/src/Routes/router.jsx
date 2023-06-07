@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         {
             path:'/update/:id',
             element:<PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/api/update/${params.id}`)
+            loader: ({params}) => fetch(`https://taskzen-mu.vercel.app/api/update/${params.id}`)
         }
       ]
     },
